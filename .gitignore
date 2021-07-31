@@ -1,0 +1,13 @@
+# auto-saved files
+*~
+*.asv
+*.m~
+
+# simulation/test results
+*.pvd
+*.vtu
+*.vtk
+*.pvtu
+*.vtp
+*.mat
+*.res
