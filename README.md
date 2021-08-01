@@ -8,6 +8,7 @@ flow equation (two-dimensional, only).
 To approximate the solutions at each time step, we can use:
 - a classical Newton iterative scheme (a sequential implicity);
 - IMplicity Pressure Explicit Saturation scheme (IMPES);
+- Streamline approach.
 - modified-IMPES. 
 
 Examples of usage can be found in:
@@ -19,9 +20,8 @@ For more information on the MPFA discretization, we refer to:
    I. Aavatsmark: An introduction to multipoint flux approximations for quadrilateral grids, Comput. Geosci. 6(3-4) 405-432.
 
 ## Requirements
-The modules are compatible with the MATLAB, and it is assumed that all folders(src) is in the MATLAB path. The code has been 
+The modules are compatible with the MATLAB, and it is assumed that all folders are in the MATLAB path. The code has been 
 tested with Matlab R2018a and R2019a.
 
 ## Cite
 If you use 2ph-MPFA, please cite:
-Varela, J. (2018). Implementation of an MPFA/MPSA-FV Solver for the Unsaturated Flow in Deformable Porous Media (Master's thesis, The University of Bergen).
