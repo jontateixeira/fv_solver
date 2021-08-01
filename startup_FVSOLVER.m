@@ -7,6 +7,12 @@ function startup_SOLVER
    % current folder
    ROOT_DIR = fileparts(mfilename('fullpath'));
    
+   % add boundary condition folder and subfolders(genpath)
+   addpath(genpath(fullfile(ROOT_DIR,'bcond')));
+   
+   % add initial condition folder and subfolders(genpath)
+   addpath(genpath(fullfile(ROOT_DIR,'initcond')));
+   
    % add common folder and subfolders(genpath)
    addpath(genpath(fullfile(ROOT_DIR,'preprocess')));
    
