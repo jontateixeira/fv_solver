@@ -1,0 +1,68 @@
+################################################################################
+# Configuration File
+################################################################################
+[problem]
+meshFilePath = "C:\DFiles\MATLAB\MPFA\2phase_fracture_simulator\meshes\mesh\slab.msh"
+outputFilePath = "C:\DFiles\MATLAB\MPFA\2phase_fracture_simulator\test\slab\implicit"
+pSolver = "MPFAD"		# TPFA, MPFAO, MPFAD, MPFAQL, MPFAH
+tSolver = "EXPLICIT"    # transport method (IMPLICIT, EXPLICIT, STREAMLINE)
+maxVPI = 1.1            # maximum vpi, if totalTime less than maxVPI simulation is finished at this time
+totalTime = 86400       # Total time of simulation [sec]
+
+[fluids]
+density = [1000, 880]   # Density value (first "water", secondely "oil")
+vicosity = [1, 4]   # Viscosity value (first "water", secondely "oil")
+residualSaturation = [.0, .0] # Unredutible water sat. (Swr) and residual oil sat. (Sor)
+nw = 2
+no = 2
+
+[rock]
+permeability = [1, 0, 0, 1; 2, 0, 0, 2]
+porosity = [1, .9]
+
+[boundaryCondition]
+bcflagAtFaces = [201, 0; 202, -1; 101, 0]  # [101 - 200] ==> "Dirichlet"; [201 to 300] ==> "Newmann"
+bcFlagAtNodes = [202, 201]     # [101 - 200] ==> "Dirichlet"; [201 to 300] ==> "Newmann"
+
+[source]
+# nan sets that not has the parameter or NULL value
+injWellLocation = [nan,nan;nan,nan] # [x1, y1; x2, y2; ...] location of injector well
+injWellRadius = [0.01,0.01] # injector well radius (influence radius) one per wells
+injWellsat = [1.0,1.0]    # saturation (injectors wells)
+injWellPressure = [nan,nan] # injector well pressure, one per wells
+injWellRate = [0,0]       # injector well rate (m3/d), one per wells
+injWellType = [2,2]       # type of well: 0 ==> point well (unstructured mesh);
+                          #               1 ==> point well (structured mesh);
+						  #               2 ==> line well (struct.);
+						  #               3 ==> line well (unstructured mesh, just inside domain). 
+
+prdWellLocation = [nan,nan;nan,nan] # [x1, y1; x2, y2; ...] location of producer well
+prdWellRadius = [0.01,0.01] # producer well radius (influence radius) one per wells
+prdWellPressure = [0,0]   # producer well pressure, one per wells
+prdWellRate = [nan,nan]   # producer well rate (m3/d), one per wells
+prdWellType = [2,2]       # type of well: 0 ==> point well (unstructured mesh);
+                          #               1 ==> point well (structured mesh);
+						  #               2 ==> line well (struct.);
+						  #               3 ==> line well (unstructured mesh, just inside domain). 
+
+[transportSolver]
+courant = 0.75        # Courant number will be used as a stability parameter
+
+# implicit solver
+# iteropt = 5
+# itermax = 10
+
+# streamline solver
+# numsline = 350       # numero de streamlines
+# substeps = 1         # resolucao grafica das streamlines (numero de pontos dentro do elemento)
+# maxsteps = 100000    # numero grande (numero mágico)
+
+#[fracture]
+#nfrac = 0                   # number of fractures
+#thickness = 0.001 #[0.001, 0.001] # fracture thickness
+#kfracture = [100, 1] #; 1000, 1]   # fracture permeability
+
+[timestep]
+dvtol =-1e-5          # derivation of velocity tolerance ([0,1] actived)
+mtime = [0.85, 1.15]  # multipliers for time step selection
+dtmax = 5e+5          # maximum time step size
