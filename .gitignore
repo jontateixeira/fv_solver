@@ -11,3 +11,7 @@
 *.vtp
 *.mat
 *.res
+
+# other files
+*.zip
+*.pdf
